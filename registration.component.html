@@ -1,0 +1,46 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+    <div>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required [(ngModel)]="user.name" name="name" #name="ngModel">
+    </div>
+
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" required [(ngModel)]="user.username" name="username" #username="ngModel">
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" required [(ngModel)]="user.password" name="password" #password="ngModel">
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" required [(ngModel)]="user.confirmPassword" name="confirmPassword" #confirmPassword="ngModel">
+    </div>
+
+    <div>
+      <label for="country">Country</label>
+      <select id="country" [(ngModel)]="user.country" name="country" (change)="onCountryChange()">
+        <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="state">State</label>
+      <select id="state" [(ngModel)]="user.state" name="state" (change)="onStateChange()">
+        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="city">City</label>
+      <select id="city" [(ngModel)]="user.city" name="city">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="!registrationForm.form.valid">Submit</button>
+  </form>
+</div>
